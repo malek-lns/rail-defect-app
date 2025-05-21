@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pt
+uploads/
+crops/
+*.zip
+*.jpg
+*.jpeg
+*.png
+results.txt
+.DS_Store
+*.pyc

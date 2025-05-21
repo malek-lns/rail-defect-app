@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détection de Défauts de Rail</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Rail Defect Detection</h1>
+
+  <!-- Formulaire pour uploader une image -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit">Uploader l’image</button>
+  </form>
+
+  <!-- Bouton pour détecter la rail -->
+  <form action="/detect-rail" method="post">
+    <button type="submit">1. Détecter la rail (prétraitement)</button>
+  </form>
+
+  <!-- Bouton pour détecter les défauts -->
+  <form action="/detect-defauts" method="post">
+    <button type="submit">2. Détecter les défauts</button>
+  </form>
+
+  {% if results %}
+    <div class="results">
+      <h2>Résultats de la classification :</h2>
+      <ul>
+        {% for line in results %}
+          <li>{{ line }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détection de Défauts de Rail</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .results {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rail Defect Detection</h1>
+
+  <!-- Formulaire pour uploader une image -->
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*" required>
+    <button type="submit">Uploader l’image</button>
+  </form>
+
+  <!-- Bouton pour détecter la rail -->
+  <form action="/detect-rail" method="post">
+    <button type="submit">1. Détecter la rail (prétraitement)</button>
+  </form>
+
+  <!-- Bouton pour détecter les défauts -->
+  <form action="/detect-defauts" method="post">
+    <button type="submit">2. Détecter les défauts</button>
+  </form>
+
+  {% if results %}
+    <div class="results">
+      <h2>Résultats de la classification :</h2>
+      <ul>
+        {% for line in results %}
+          <li>{{ line }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+  <script>
+    // Ajouter un événement pour afficher les résultats
+    document.addEventListener("DOMContentLoaded", function() {
+      const resultsDiv = document.querySelector(".results");
+      if (resultsDiv) {
+        resultsDiv.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
